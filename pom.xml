@@ -10,40 +10,27 @@
   <version>1.0-SNAPSHOT</version>
   <name>Maven Project</name>
 
-  <!-- ===================== -->
-  <!-- PROPERTIES (FIXED)    -->
-  <!-- ===================== -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <!-- FIX: Java 7 -> Java 8 -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <!-- ===================== -->
-  <!-- MODULES              -->
-  <!-- ===================== -->
   <modules>
     <module>server</module>
     <module>webapp</module>
   </modules>
 
-  <!-- ===================== -->
-  <!-- BUILD                -->
-  <!-- ===================== -->
   <build>
-
     <plugins>
 
-      <!-- Compiler Plugin (modern fix) -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
       </plugin>
 
-      <!-- WAR plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -53,7 +40,6 @@
         </configuration>
       </plugin>
 
-      <!-- Release plugin -->
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <version>2.5.3</version>
@@ -62,7 +48,6 @@
         </configuration>
       </plugin>
 
-      <!-- Site plugin -->
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.12.1</version>
@@ -71,9 +56,6 @@
     </plugins>
   </build>
 
-  <!-- ===================== -->
-  <!-- DEPENDENCY MGMT      -->
-  <!-- ===================== -->
   <dependencyManagement>
     <dependencies>
 
@@ -96,6 +78,21 @@
         <scope>test</scope>
       </dependency>
 
+      <!-- FIX: explicitly add hamcrest (needed for old tests) -->
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-core</artifactId>
+        <version>2.2</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-library</artifactId>
+        <version>2.2</version>
+        <scope>test</scope>
+      </dependency>
+
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
@@ -106,9 +103,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <!-- ===================== -->
-  <!-- SCM                  -->
-  <!-- ===================== -->
   <scm>
     <connection>scm:git:git@github.com:jleetutorial/maven-project.git</connection>
     <developerConnection>scm:git:git@github.com:jleetutorial/maven-project.git</developerConnection>
